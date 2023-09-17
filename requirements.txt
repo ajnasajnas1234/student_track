@@ -84,6 +84,7 @@ future @ file:///C:/b/abs_3dcibf18zi/croot/future_1677599891380/work
 gensim @ file:///C:/b/abs_a5vat69tv8/croot/gensim_1674853640591/work
 glob2 @ file:///home/linux1/recipes/ci/glob2_1610991677669/work
 greenlet @ file:///C:/b/abs_47lk_w2ajq/croot/greenlet_1670513248400/work
+gunicorn==21.2.0
 h5py @ file:///C:/ci/h5py_1659089830381/work
 HeapDict @ file:///Users/ktietz/demo/mc3/conda-bld/heapdict_1630598515714/work
 holoviews @ file:///C:/b/abs_bbf97_0kcd/croot/holoviews_1676372911083/work
