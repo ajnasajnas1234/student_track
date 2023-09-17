@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HIFZ</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        } */
+        body {
+    font-family: Arial, sans-serif;
+    background-image: url('/static/admin_hod/assets/img/myimages/og.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 20px;
+    margin: 0;
+    color: #333;
+}
+
+
+
+        /* Container Styles */
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color:#FF0000;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5d878;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+/* Button Styles */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Align the button to the right end */
+}
+
+.custom-button {
+    padding: 10px 20px;
+    background-color: #4796bb;
+    color: #fff;
+    text-decoration: none;
+    border: #007bff;
+    outline-offset: 2px;
+    outline-color: black;
+    font-weight: bold;
+    margin-top: 10px; /* Add some spacing */
+    transition: background-color 0.3s, transform 0.2s, color 0.3s;
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Add a slight scale-up effect on hover */
+    color: #fff; /* Change text color on hover */
+}
+
+.custom-button::before {
+    content: "+"; /* Use the "+" symbol */
+    display: inline-block;
+    margin-right: 5px; /* Add spacing between the symbol and text */
+    transform: translateY(1px); /* Adjust vertical position */
+}
+
+    </style>
+</head>
+<body>
+   
+    <div class="button-container">
+    <a href="{% url 'addhifz' %}" class="custom-button"></a>
+</div>
+  
+
+    <h1><b>STUDENTS DETAILS</b></h1>
+    <br><br><br>
+    <div class="container">
+       
+       
+       
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>ADMISSION NO</th>
+                    <th>NAME</th>
+                    <th>PLACE</th>
+                    <th>DISTRICT</th>
+                    <th>POST</th>
+                    <th>PINCODE</th>
+                    <th>DOB</th>
+                    <th>FATHER</th>
+                    <th>MOTHER</th>
+                    <th>GUARDIAN</th>
+                    <th>CONTACT</th>
+                    <th>DATE OF ADMISSION</th>
+                    
+                    
+                 
+                </tr>
+            </thead>
+            <tbody>
+                {% for students in students %}
+                <tr>
+                    <td>{{ students.Admission_no }}</td>
+                    <td>{{ students.Student_name }}</td>
+                    <td>{{ students.Place }}</td>
+                    <td>{{ students.District }}</td>
+                    <td>{{ students.Post }}</td>
+                    <td>{{ students.Pin_code }}</td>
+                    <td>{{ students.date_of_birth }}</td>
+                    <td>{{ students.Father_name }}</td>
+                    <td>{{ students.Mother_name }}</td>
+                    <td>{{ students.Guardian_name }}</td>
+                    <td>{{ students.Guardian_no }}</td>
+                    <td>{{ students.Admitted_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

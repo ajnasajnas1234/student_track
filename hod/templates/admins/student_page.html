@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/admin_hod/assets/img/myimages/og.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+            margin: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .background {
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Optional: Add styles for the title if needed */
+        h1 {
+            color: #FF0000;
+            text-align: center;
+        }
+
+        .card {
+            width: 300px;
+            margin: 20px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s, color 0.3s;
+        }
+
+        .card:hover {
+            background-color: #d9d9d9;
+            transform: scale(1.05);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Style for the card text */
+        .card-text {
+            padding: 10px;
+        }
+
+        /* Remove underline from anchor elements inside .card */
+        .card a {
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="content-wrapper">
+        <h1 class="fw-bold py-3 mb-4"><b>STUDENT'S LIST</b></h1>
+        <div class="container">
+            <a href="{% url 'hifz' %}" class="card">
+                <img src="/static/admin_hod/assets/img/myimages/hifz.webp" alt="Class 1 Image">
+                <div class="card-text"><b>HIFZ</b></div>
+            </a><br><br>
+            <a href="{% url 'dawa' %}" class="card">
+                <img src="/static/admin_hod/assets/img/myimages/dawa.webp" alt="Class 2 Image">
+                <div class="card-text"><b>DA'WA</b></div>
+            </a><br><br>
+            <a href="{% url 'dowra' %}" class="card">
+                <img src="/static/admin_hod/assets/img/myimages/dowra.webp" alt="Class 3 Image">
+                <div class="card-text"><b>DOWRA</b></div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

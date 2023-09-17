@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COURSES</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/admin_hod/assets/img/myimages/og.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #FF0000;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #FF0000;
+        }
+
+        .card {
+            border: 8px solid #000808;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Button Styles */
+        .button-container {
+            display: flex;
+            justify-content: flex-end; /* Align the button to the right end */
+        }
+
+        .custom-button {
+            padding: 10px 20px;
+            background-color: #4796bb;
+            color: #fff;
+            text-decoration: none;
+            border: #000307;
+            outline-offset: 2px;
+            outline-color: black;
+            font-weight: bold;
+            margin-top: 10px; /* Add some spacing */
+            transition: background-color 0.3s, transform 0.2s, color 0.3s;
+        }
+
+        .custom-button:hover {
+            background-color: #4796bb;
+            transform: scale(1.05); /* Add a slight scale-up effect on hover */
+            color: #fff; /* Change text color on hover */
+        }
+
+        .custom-button::before {
+            content: "+"; /* Use the "+" symbol */
+            display: inline-block;
+            margin-right: 5px; /* Add spacing between the symbol and text */
+            transform: translateY(1px); /* Adjust vertical position */
+        }
+
+        /* Style for the DELETE button */
+        .custom-delete-button {
+            background-color: #5463ee; /* Red color */
+            color: #FFFFFF; /* White text */
+            border: none; /* Remove the border */
+            padding: 10px 20px; /* Adjust padding as needed */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Change cursor on hover */
+            text-decoration: none; /* Remove underline */
+            transition: background-color 0.3s, transform 0.2s, color 0.3s;
+        }
+
+        /* Hover effect for the DELETE button */
+        .custom-delete-button:hover {
+            background-color: #5463ee; /* Darker red color on hover */
+            transform: scale(1.05); /* Add a slight scale-up effect on hover */
+            color: #FFFFFF; /* White text on hover */
+        }
+
+        .flip-box-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow boxes to wrap to the next line */
+        }
+
+        .flip-box {
+    width: 330px; /* Set the width of the flip boxes */
+    height: 330px; /* Set the height of the flip boxSes */
+    perspective: 1000px;
+    margin: 60px 70px 70px 80px; /* Adjust the spacing between flip boxes */
+}
+
+
+        .flip-box-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-box:hover .flip-box-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-box-front,
+        .flip-box-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            flex-direction: column; /* Display lines in a column */
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            background-size: cover; /* Make the background image cover the entire element */
+        }
+
+        .flip-box-front {
+            background-color: rgb(241, 228, 239); /* Set the background color to transparent */
+            color: black;
+        }
+
+        .flip-box-back {
+            background-color: rgb(241, 228, 239);/* Set the background color to transparent */
+            color: #333;
+            transform: rotateY(180deg);
+            padding: 10px;
+        }
+
+        .container-xxl {
+            text-align: center; /* Center-align content */
+            padding: 20px;
+        }
+
+        p {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+  <div class="button-container">
+    <a href="{% url 'add_course_details' %}" class="custom-button"></a>
+</div>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h1 class="fw-bold py-3 mb-4"><b>COURSES OFFERED</b></h1>
+   
+    <div class="flip-box-container">
+        {% for i in data %}
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <h2>{{ i.Course_name }}</h2>
+                </div>
+                <div class="flip-box-back">
+                    <p>{{ i.Description }}</p><br><br>
+                    <a href="{% url 'delete_course' i.id %}" class="custom-delete-button">DELETE</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
